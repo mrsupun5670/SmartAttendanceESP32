@@ -1,0 +1,13 @@
+# Arduino
+*.elf
+*.bin
+*.hex
+*.map
+*.txt
+
+# VS Code
+.vscode/
+
+# OS
+Thumbs.db
+Desktop.ini

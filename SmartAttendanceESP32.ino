@@ -21,12 +21,12 @@
 // CONFIGURATION
 // ----------------------------------------------------------------------
 // WI-FI CREDENTIALS
-const char* wifi_ssid = "Pixel 10 Pro XL";
-const char* wifi_pass = "12345678";
+const char* wifi_ssid = "Fiber";
+const char* wifi_pass = "Suneth@512";
 
 // GOOGLE SCRIPT CONFIG
 // NOTE: Google Script Base Path (/macros/s/...)
-const String SCRIPT_PATH = "https://script.google.com/macros/s/AKfycby8QjOohMtw2NpOMpLytM2_LI-lwb39g3Cc2Kaj7FTaRMUb6O744m2mm1uv3724IqY/exec";
+const String SCRIPT_PATH = "https://script.google.com/macros/s/AKfycbwGcyLA8nDbzgHJUIPGrlFM3zZlqZLOubMkKuVLaDrFjYGHgkW1Y3UubRqJOxrEqQF2ng/exec";
 
 // PINS - GSM (Serial2)
 #define RX_PIN 16
@@ -214,6 +214,9 @@ void sendDataToScript(String uid, String type) {
           // CLEAN PHONE NUMBER
           phone.replace(" ", ""); 
           phone.replace("-", "");
+          if (!phone.startsWith("+")) {
+            phone = "+" + phone;
+          }
           
           String msg = (type == "BUS_ENTRY") ? "Alert: " + name + " BOARDED the Bus." : "Alert: " + name + " LEFT the Bus.";
           sendSMS(phone, msg);
